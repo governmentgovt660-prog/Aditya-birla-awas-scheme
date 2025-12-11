@@ -1,0 +1,182 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Birla Awas Yojana - Official Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {--primary:#1e40af;--success:#10b981;--warning:#f59e0b;--danger:#ef4444;--gold:#f59e0b;--light:#f8fafc;}
+        *{margin:0;padding:0;box-sizing:border-box;}
+        body{font-family:'Roboto',sans-serif;line-height:1.6;background:var(--light);color:#1f2937;}
+        .header{background:var(--primary);color:white;padding:1rem 0;position:fixed;width:100%;z-index:1000;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+        .container{max-width:1200px;margin:0 auto;padding:0 1rem;display:flex;justify-content:space-between;align-items:center;}
+        .logo{font-size:1.5rem;font-weight:700;}.logo span{color:var(--gold);}
+        nav ul{display:flex;list-style:none;gap:2rem;}nav a{color:white;text-decoration:none;font-weight:500;transition:color 0.3s;}
+        nav a:hover{color:var(--gold);}
+        .hero{background:linear-gradient(135deg,var(--primary),#3b82f6);height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;color:white;margin-top:70px;}
+        .hero h1{font-size:3.5rem;margin-bottom:1rem;}.hero p{font-size:1.3rem;margin-bottom:2rem;}
+        .btn{padding:1rem 2rem;border:none;border-radius:8px;font-size:1.1rem;font-weight:600;cursor:pointer;transition:all 0.3s;display:inline-block;}
+        .btn-primary{background:var(--gold);color:var(--primary);}.btn-primary:hover{background:#eab308;transform:translateY(-2px);}
+        .btn-success{background:var(--success);color:white;}.btn-danger{background:var(--danger);color:white;}
+        .section{padding:4rem 1rem;max-width:1200px;margin:0 auto;}
+        .section h2{text-align:center;font-size:2.5rem;margin-bottom:3rem;color:var(--primary);}
+        .form-container{background:white;padding:3rem;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.1);max-width:600px;margin:0 auto;}
+        .form-group{margin-bottom:1.5rem;}.form-label{display:block;margin-bottom:0.5rem;font-weight:600;color:var(--primary);}
+        .form-control{width:100%;padding:1rem;border:2px solid #e5e7eb;border-radius:8px;font-size:1rem;transition:border-color 0.3s;}
+        .form-control:focus{outline:none;border-color:var(--gold);}.form-control:invalid{border-color:var(--danger);}
+        .fee-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid var(--warning);padding:1.5rem;border-radius:12px;text-align:center;margin:2rem 0;}
+        .step-indicator{display:flex;justify-content:space-between;margin:2rem 0;background:#f3f4f6;padding:1rem;border-radius:12px;}
+        .step{flex:1;text-align:center;padding:1rem;font-weight:500;}.step.active{color:var(--primary);font-weight:700;}
+        .step.complete{color:var(--success);}.step.complete::after{content:'✓';font-size:1.5rem;display:block;}
+        .dashboard{display:none;background:white;padding:3rem;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,0.1);margin-top:2rem;}
+        @media (max-width:768px){.hero h1{font-size:2.5rem;}}
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Aditya Birla <span>Awas Yojana</span></div>
+            <nav><ul><li><a href="#home">Home</a></li><li><a href="#apply">Apply</a></li><li><a href="#dashboard">Dashboard</a></li></ul></nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div><h1>Aditya Birla Awas Yojana</h1><p>Step 1: Fill Form → Step 2: Pay ₹150 → Step 3: Submit</p><a href="#apply" class="btn btn-primary">Start Now</a></div>
+    </section>
+
+    <section class="section" id="apply">
+        <div class="form-container">
+            <h2><i class="fas fa-file-alt mr-3"></i>Application Form</h2>
+            
+            <!-- 3-STEP INDICATOR -->
+            <div class="step-indicator">
+                <div class="step active" id="step1">1. Fill Form</div>
+                <div class="step" id="step2">2. Pay ₹150</div>
+                <div class="step" id="step3">3. Submit</div>
+            </div>
+
+            <div class="fee-box">
+                <h3>💳 Processing Fee: ₹150</h3>
+                <p>Pay after completing form → Instant verification</p>
+            </div>
+            
+            <form id="applicationForm">
+                <div class="form-group">
+                    <label>Full Name <span style="color:var(--danger);">*</span></label>
+                    <input type="text" class="form-control" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label>Aadhaar Number <span style="color:var(--danger);">*</span></label>
+                    <input type="text" class="form-control" id="aadhaar" maxlength="12" required>
+                </div>
+                <div class="form-group">
+                    <label>Mobile <span style="color:var(--danger);">*</span></label>
+                    <input type="tel" class="form-control" id="mobile" required>
+                </div>
+                <div class="form-group">
+                    <label>Annual Income (₹) <span style="color:var(--danger);">*</span></label>
+                    <input type="number" class="form-control" id="income" required>
+                </div>
+                
+                <!-- STEP 1: Fill Form Complete -->
+                <button type="button" class="btn btn-primary" id="nextStep1" style="width:100%;">
+                    <i class="fas fa-arrow-right mr-2"></i> Form Complete → Pay ₹150
+                </button>
+            </form>
+
+            <!-- STEP 2: PAYMENT (Hidden Initially) -->
+            <div id="paymentStep" style="display:none;">
+                <h3 style="color:var(--success);">✅ Form Verified</h3>
+                <button type="button" class="btn btn-danger" id="payButton" style="width:100%;">
+                    <i class="fas fa-credit-card mr-2"></i> Pay ₹150 Now
+                </button>
+            </div>
+
+            <!-- STEP 3: FINAL SUBMIT (Hidden Initially) -->
+            <form id="finalSubmitForm" style="display:none;">
+                <button type="submit" class="btn btn-success" id="submitFinal" style="width:100%;">
+                    <i class="fas fa-paper-plane mr-2"></i> Submit Application
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <section class="section" id="dashboard">
+        <div class="dashboard">
+            <h2 style="text-align:center;color:var(--success);">✅ Application Submitted!</h2>
+            <p style="text-align:center;font-size:1.2rem;">ID: <strong id="appIdDisplay">ABAS-2025-XXXXX</strong></p>
+            <div style="text-align:center;margin-top:2rem;">
+                <button class="btn btn-success" onclick="downloadReceipt()" style="font-size:1.1rem;">
+                    <i class="fas fa-download mr-2"></i> Download Receipt
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let step = 1;
+        let applicationId = '';
+
+        // STEP 1: Form validation → Next
+        document.getElementById('nextStep1').addEventListener('click', function() {
+            if (document.getElementById('applicationForm').checkValidity()) {
+                step = 2;
+                updateSteps();
+                document.getElementById('applicationForm').style.display = 'none';
+                document.getElementById('paymentStep').style.display = 'block';
+            } else {
+                alert('Please fill all required fields');
+            }
+        });
+
+        // STEP 2: Payment → Final Submit
+        document.getElementById('payButton').addEventListener('click', function() {
+            if (confirm('Pay ₹150 processing fee?
+
+Real payment gateway in production.')) {
+                step = 3;
+                updateSteps();
+                document.getElementById('paymentStep').style.display = 'none';
+                document.getElementById('finalSubmitForm').style.display = 'block';
+                document.getElementById('payButton').innerHTML = '<i class="fas fa-check mr-2"></i> ✓ Paid ₹150';
+                document.getElementById('payButton').className = 'btn btn-success';
+            }
+        });
+
+        // STEP 3: Final Submit → Dashboard
+        document.getElementById('finalSubmitForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            applicationId = 'ABAS-2025-' + Date.now().toString().slice(-5);
+            document.getElementById('appIdDisplay').textContent = applicationId;
+            document.querySelector('#apply').style.display = 'none';
+            document.querySelector('.dashboard').style.display = 'block';
+            localStorage.setItem('abasApp', applicationId);
+            alert(`✅ Submitted!
+ID: ${applicationId}`);
+        });
+
+        function updateSteps() {
+            for(let i=1; i<=3; i++) {
+                const el = document.getElementById('step'+i);
+                el.className = i < step ? 'step complete' : i === step ? 'step active' : 'step';
+            }
+        }
+
+        // Load saved app
+        window.onload = function() {
+            const saved = localStorage.getItem('abasApp');
+            if (saved) {
+                document.getElementById('appIdDisplay').textContent = saved;
+                document.querySelector('#apply').style.display = 'none';
+                document.querySelector('.dashboard').style.display = 'block';
+            }
+        };
+
+        function downloadReceipt() {
+            alert(`📄 Receipt: ${applicationId}`);
+        }
+    </script>
+</body>
+</html>
