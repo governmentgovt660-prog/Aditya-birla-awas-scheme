@@ -1,0 +1,277 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya Birla Awas Scheme | Premium Affordable Housing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); min-height: 100vh; }
+        
+        /* Header & Navigation */
+        .header { background: rgba(30, 58, 138, 0.95); backdrop-filter: blur(20px); position: fixed; width: 100%; z-index: 1000; padding: 1rem 0; box-shadow: 0 8px 32px rgba(0,0,0,0.1); }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 2rem; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: #ffd700; text-decoration: none; }
+        .nav-menu { display: flex; list-style: none; gap: 2rem; }
+        .nav-link { color: white; text-decoration: none; font-weight: 500; transition: all 0.3s ease; position: relative; }
+        .nav-link:hover { color: #ffd700; }
+        .nav-link::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: #ffd700; transition: width 0.3s ease; }
+        .nav-link:hover::after { width: 100%; }
+        .lang-toggle { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 0.5rem 1rem; border-radius: 25px; cursor: pointer; }
+        
+        /* Hero Section */
+        .hero { height: 100vh; background: linear-gradient(rgba(30,58,138,0.8), rgba(59,130,246,0.6)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1.5" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>'); }
+        .hero-content { max-width: 900px; padding: 0 2rem; z-index: 2; animation: fadeInUp 1s ease; }
+        .hero h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 700; margin-bottom: 1.5rem; text-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+        .hero p { font-size: 1.4rem; margin-bottom: 2rem; opacity: 0.95; }
+        .cta-primary { background: linear-gradient(135deg, #ffd700, #ffed4a); color: #1e3a8a; padding: 1.2rem 3rem; border-radius: 50px; font-size: 1.2rem; font-weight: 600; text-decoration: none; display: inline-block; box-shadow: 0 10px 40px rgba(255,215,0,0.4); transition: all 0.4s ease; }
+        .cta-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(255,215,0,0.6); }
+        
+        /* Stats Section */
+        .stats-section { padding: 6rem 2rem; max-width: 1400px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 4rem; color: #1e3a8a; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background: linear-gradient(90deg, #ffd700, #ffed4a); border-radius: 2px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .stat-card { background: rgba(255,255,255,0.9); backdrop-filter: blur(20px); padding: 2.5rem 2rem; border-radius: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.3); transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #ffd700, #ffed4a); }
+        .stat-card:hover { transform: translateY(-10px); box-shadow: 0 25px 60px rgba(0,0,0,0.15); }
+        .stat-number { font-size: 3rem; font-weight: 700; color: #1e3a8a; margin-bottom: 0.5rem; }
+        .stat-label { font-size: 1.1rem; color: #64748b; font-weight: 500; }
+        
+        /* Forms & Dashboard */
+        .form-section, .dashboard { max-width: 800px; margin: 4rem auto; padding: 3rem; background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 24px; box-shadow: 0 20px 60px rgba(0,0,0,0.1); border: 1px solid rgba(255,255,255,0.3); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: #1e3a8a; }
+        .form-control { width: 100%; padding: 1rem 1.25rem; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 1rem; transition: all 0.3s ease; background: white; }
+        .form-control:focus { outline: none; border-color: #ffd700; box-shadow: 0 0 0 4px rgba(255,215,0,0.1); }
+        .btn { padding: 1rem 2rem; border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.3s ease; text-decoration: none; display: inline-block; text-align: center; }
+        .btn-primary { background: linear-gradient(135deg, #1e3a8a, #3b82f6); color: white; }
+        .btn-success { background: linear-gradient(135deg, #10b981, #34d399); color: white; }
+        .btn-danger { background: linear-gradient(135deg, #ef4444, #f87171); color: white; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .fee-highlight { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 2px solid #f59e0b; padding: 1.5rem; margin: 1.5rem 0; border-radius: 16px; text-align: center; }
+        
+        /* Dashboard */
+        .dashboard { display: none; }
+        .dashboard-header { text-align: center; margin-bottom: 3rem; }
+        .welcome-title { font-size: 2.5rem; background: linear-gradient(135deg, #1e3a8a, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .progress-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 3rem 0; }
+        .progress-card { padding: 2rem; border-radius: 20px; backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.3); transition: all 0.3s ease; }
+        .progress-card.success { background: rgba(16,185,129,0.1); border-color: #10b981; }
+        .chart-container { background: white; border-radius: 20px; padding: 2rem; margin: 2rem 0; box-shadow: 0 10px 40px rgba(0,0,0,0.1); }
+        
+        /* Footer */
+        .footer { background: #1e293b; color: white; padding: 4rem 2rem 2rem; margin-top: 6rem; }
+        .footer-content { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { color: #ffd700; margin-bottom: 1rem; }
+        .footer-section a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 0.5rem; transition: color 0.3s; }
+        .footer-section a:hover { color: #ffd700; }
+        
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { .nav-menu { display: none; } .hero h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Aditya Birla <span style="color: #ffd700;">Awas</span></a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#apply" class="nav-link">Apply</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#stats" class="nav-link">Stats</a></li>
+                <li><a href="#" class="nav-link lang-toggle" onclick="toggleLang()">हिंदी</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Premium Affordable Housing</h1>
+            <p>Secure your dream home with Aditya Birla Awas Scheme. Just ₹150 processing fee unlocks 12 Lakh subsidy eligibility.</p>
+            <a href="#apply" class="cta-primary">Apply Now <i class="fas fa-arrow-right ml-2"></i></a>
+        </div>
+    </section>
+
+    <section class="stats-section" id="stats">
+        <h2 class="section-title">Scheme Achievements</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">3.34 Cr</div>
+                <div class="stat-label">Houses Sanctioned</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2.8 Cr</div>
+                <div class="stat-label">Houses Completed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">₹1.5 Lakh Cr</div>
+                <div class="stat-label">Assistance Released</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">99.5%</div>
+                <div class="stat-label">Satisfaction Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="form-section" id="apply">
+        <h2 style="text-align: center; color: #1e3a8a; margin-bottom: 2rem; font-size: 2.5rem;">Apply for Premium Housing</h2>
+        <form id="applyForm">
+            <div class="fee-highlight">
+                <i class="fas fa-rupee-sign fa-2x" style="color: #f59e0b;"></i>
+                <div style="font-size: 1.3rem; font-weight: 700; margin-top: 1rem;">Processing Fee: ₹150</div>
+                <div>One-time • Non-refundable • Secure UPI Payment</div>
+            </div>
+            <button type="button" class="btn btn-danger w-full mb-4" onclick="payFee()">
+                <i class="fas fa-credit-card mr-2"></i> Pay ₹150 Securely
+            </button>
+            
+            <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" disabled required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Aadhaar Number</label>
+                <input type="text" class="form-control" id="aadhaar" disabled required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Mobile Number</label>
+                <input type="tel" class="form-control" id="mobile" disabled required>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Annual Income (₹)</label>
+                <input type="number" class="form-control" id="income" disabled required>
+            </div>
+            <button type="submit" class="btn btn-primary w-full" disabled id="submitBtn">
+                <i class="fas fa-paper-plane mr-2"></i> Submit Premium Application
+            </button>
+        </form>
+    </section>
+
+    <section class="dashboard" id="dashboard">
+        <div class="dashboard-header">
+            <h1 class="welcome-title">Welcome Back, <span id="dashName">Applicant</span></h1>
+            <p style="font-size: 1.2rem; color: #64748b;">Application ID: <strong id="appId">ABAS-2025-XXXX</strong></p>
+        </div>
+        
+        <div class="progress-grid">
+            <div class="progress-card success">
+                <i class="fas fa-check-circle fa-3x" style="color: #10b981;"></i>
+                <h3>✅ Fee Paid Successfully</h3>
+                <p>₹150 • Dec 11, 2025 • UPI Ref: ABAS123456</p>
+            </div>
+            <div class="progress-card success">
+                <i class="fas fa-home fa-3x" style="color: #3b82f6;"></i>
+                <h3>🏠 2BHK Allocated</h3>
+                <p>Sector-15, Urban • ₹12 Lakh Subsidy Approved</p>
+            </div>
+            <div class="progress-card" style="background: rgba(245,158,11,0.1); border-color: #f59e0b;">
+                <i class="fas fa-clock fa-3x" style="color: #f59e0b;"></i>
+                <h3>⏳ Documents Pending</h3>
+                <p>Upload Income Proof • Due: Dec 18, 2025</p>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <canvas id="progressChart" width="400" height="200"></canvas>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <button onclick="downloadReport()" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+                <i class="fas fa-download mr-2"></i> Download Status Report
+            </button>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Aditya Birla Awas Scheme</h3>
+                <p>Premium affordable housing for every Indian family</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <a href="tel:+9118001234567">1800-123-4567</a>
+                <a href="mailto:support@adityabirlascheme.com">support@adityabirlascheme.com</a>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Refund Policy</a>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #334155;">
+            <p>&copy; 2025 Aditya Birla Group. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let feePaid = false;
+        
+        function toggleLang() {
+            alert('Language toggle functionality - Hindi/English');
+        }
+        
+        function payFee() {
+            if (confirm('Confirm ₹150 payment via UPI/Razorpay? (Demo Mode)')) {
+                feePaid = true;
+                document.getElementById('name').disabled = false;
+                document.getElementById('aadhaar').disabled = false;
+                document.getElementById('mobile').disabled = false;
+                document.getElementById('income').disabled = false;
+                document.querySelector('.btn-danger').innerHTML = '<i class="fas fa-check mr-2"></i> ✓ Fee Paid Successfully';
+                document.querySelector('.btn-danger').className = 'btn btn-success w-full mb-4';
+                alert('✅ Payment successful! Reference: ABAS-123456789');
+            }
+        }
+        
+        document.getElementById('applyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (feePaid) {
+                const appId = 'ABAS-2025-' + Math.floor(Math.random() * 10000);
+                document.getElementById('dashName').textContent = document.getElementById('name').value || 'Premium Applicant';
+                document.getElementById('appId').textContent = appId;
+                document.querySelector('.form-section').style.display = 'none';
+                document.querySelector('.dashboard').style.display = 'block';
+                document.documentElement.scrollTop = 0;
+                initChart();
+                alert(`🎉 Premium Application Submitted!
+ID: ${appId}
+Track progress in Dashboard`);
+            }
+        });
+        
+        function initChart() {
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'In Progress', 'Pending'],
+                    datasets: [{
+                        data: [65, 25, 10],
+                        backgroundColor: ['#10b981', '#f59e0b', '#ef4444'],
+                        borderWidth: 0,
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { position: 'bottom', labels: { padding: 30, font: { size: 14 } } } },
+                    cutout: '60%'
+                }
+            });
+        }
+        
+        function downloadReport() {
+            alert('📄 Professional Status Report downloaded as PDF');
+        }
+    </script>
+</body>
+</html>
